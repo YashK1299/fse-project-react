@@ -1,14 +1,14 @@
 
 import React from "react";
 import PostSummaryList from "../PostSummaryList";
-const Trending = () => {
+const Entertainment = () => {
   return (<div>
         <div className="card wd-card-top mt-1">
-          <img src="../images/Cake.jpeg"
+          <img src="../images/Coachella.jpeg"
                className="wd-card-top-image" alt=""></img>
           <div className="card-body wd-bottom-left">
             <p className="card-text"></p>
-            <h3 className="card-title">Daily objects as cakes taking over the world</h3>
+            <h3 className="card-title">Coachella 2022 Day 1 is underway</h3>
           </div>
         </div>
         {PostSummaryList}
@@ -16,4 +16,4 @@ const Trending = () => {
   );
 }
 
-export default Trending;
+export default Entertainment;

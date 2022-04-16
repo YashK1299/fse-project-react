@@ -4,6 +4,9 @@ import PostSummaryList from "../PostSummaryList";
 import {Link, Routes, Route, HashRouter} from "react-router-dom";
 import Home from "../home";
 import ForYou from "../topics/foryou";
+import News from "../topics/news";
+import Sports from "../topics/sports"
+import Entertainment from "../topics/entertainment"
 import {Login} from "../profile/login";
 import Signup from "../profile/signup";
 import Explore from "./ExploreScreen";
@@ -39,7 +42,8 @@ const ExploreComponent = () => {
               <ul className="nav mb-2 nav-tabs">
 
                 <li className="nav-item">
-                  <a className="nav-link active" href="/explore/for-you">For You</a>
+
+                  <Link to="/explore/for-you"><a className="nav-link active" href="/explore/for-you">For You</a></Link>
                 </li>
 
                 <li className="nav-item">
@@ -47,14 +51,16 @@ const ExploreComponent = () => {
 
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="news.html">News</a>
+                  <Link to="/explore/news"> <a className="nav-link" href="/explore/news">News</a></Link>
+
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="sports.html">Sports</a>
+                  <Link to="/explore/sports"> <a className="nav-link" href="/explore/sports">Sports</a></Link>
+
                 </li>
                 <li className="nav-item d-sm-none d-md-block">
-                  <a className="nav-link"
-                     href="entertainment.html">Entertainment</a>
+                  <Link to="/explore/entertainment"> <a className="nav-link" href="/explore/entertainment">Entertainment</a></Link>
+
                 </li>
               </ul>
             </div>
@@ -63,6 +69,9 @@ const ExploreComponent = () => {
               <Routes>
                 <Route path="/for-you" element={<ForYou/>}/>
                 <Route path="/trending" element={<Trending/>}/>
+                <Route path="/news" element={<News/>}/>
+                <Route path="/sports" element={<Sports/>}/>
+                <Route path="/entertainment" element={<Entertainment/>}/>
               </Routes>
             {/*</HashRouter>*/}
 
