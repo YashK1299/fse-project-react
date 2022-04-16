@@ -22,3 +22,7 @@ export const logout = (user) =>
 export const login = (credentials) =>
     api.post(`${AUTH_API}/login`, credentials)
         .then(response => response.data);
+
+export const reset = (user) =>
+    api.post(`${AUTH_API}/resetpassword`, user)
+        .then(response => response.data);
