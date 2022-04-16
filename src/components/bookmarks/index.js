@@ -53,8 +53,13 @@ function Bookmarks() {
     setBookmarkedTuits(dummyTuits)
   }, []);
   return (
-    <div className="ttr-bookmarks">
-      <Tuits tuits={bookmarkedTuits} likeTuit={likeTuit} dislikeTuit={dislikeTuit} />
+    <div className="ttr-home">
+      <div className="border border-bottom-0">
+        <h4 className="fw-bold p-2">Bookmarks</h4>
+      </div>
+      <div className="ttr-bookmarks">
+        <Tuits tuits={bookmarkedTuits} likeTuit={likeTuit} dislikeTuit={dislikeTuit} />
+      </div>
     </div>
   );
 }
