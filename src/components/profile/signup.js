@@ -9,6 +9,10 @@ const Signup = () => {
         service.signup(newUser)
             .then(() => navigate('/home'))
             .catch(e => alert(e));
+    const reset = () =>
+        service.reset(newUser)
+            .then(() => navigate('/home'))
+            .catch(e => alert(e));
     return (
         <div>
             <h1>Signup</h1>
@@ -25,7 +29,10 @@ const Signup = () => {
                        setNewUser({...newUser, email: e.target.value})}
                    placeholder="email" type="email"/>
             <button onClick={signup}
-                    className="btn btn-primary mb-5">Signup
+                    className="btn btn-primary mb-5 form-control">Signup
+            </button>
+            <button onClick={reset}
+                    className="btn btn-primary mb-5 form-control">Reset
             </button>
         </div>
     );
