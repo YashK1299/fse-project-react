@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Tuits from "../tuits";
+import BookmarksService from "../../services/bookmarks-service";
 
 function Bookmarks() {
   let initialTuits = [];
@@ -18,7 +19,7 @@ function Bookmarks() {
         username: 'Alice'
       },
       tuit: 'Alice Rulz 😁',
-      postedOn: new Date('2021-01-01'),
+      postedOn: new Date('2021-12-01'),
       stats: {
         likes: 20,
         dislikes: 40
@@ -29,7 +30,7 @@ function Bookmarks() {
       postedBy: {
         username: 'Bob'
       },
-      postedOn: new Date('2022-01-01'),
+      postedOn: new Date('2022-02-01'),
       tuit: 'It kinda makes sense that the target audience for fidget spinners lost interest in them so quickly.',
       stats: {
         likes: 40,
@@ -39,9 +40,9 @@ function Bookmarks() {
     {
       _id: 3,
       postedBy: {
-        username: 'Sana'
+        username: 'Charlie'
       },
-      postedOn: new Date('2020-01-01'),
+      postedOn: new Date('2021-09-01'),
       tuit: 'The object of golf is to play the least amount of golf. 🤣',
       stats: {
         likes: 40,
@@ -50,7 +51,17 @@ function Bookmarks() {
     }
     ];
 
-    setBookmarkedTuits(dummyTuits)
+    BookmarksService.findTuitsBookmarkedByMe("me")
+    .then(tuits => {
+      if (tuits){
+        setBookmarkedTuits(tuits);
+      }else{
+        setBookmarkedTuits(dummyTuits);
+      }
+    }).catch(err => {
+      console.log("error fetching tuits for user. Reverting to dummy tuits for now.")
+      setBookmarkedTuits(dummyTuits);
+    })
   }, []);
   return (
     <div className="ttr-home">
