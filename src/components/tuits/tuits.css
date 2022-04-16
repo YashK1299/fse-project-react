@@ -1,5 +1,5 @@
 .ttr-tuits .ttr-tuit-avatar-logo {
-    width: 48px;
+    width: 20px;
 }
 
 .ttr-tuits .ttr-tuit-image-overlay {
@@ -11,3 +11,4 @@
     content: "";
     padding-top: 56.25%;
 }
+
