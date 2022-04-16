@@ -7,7 +7,7 @@ import Bookmarks from "../bookmarks";
 import Profile from "../profile";
 import './tuiter.css'
 import EditProfile from "../profile/edit-profile";
-import Explore from "../explore";
+import Explore from "../explore/ExploreScreen";
 import Notifications from "../notifications";
 import Messages from "../messages";
 import Lists from "../lists";
@@ -15,6 +15,7 @@ import More from "../more";
 import {Login} from "../profile/login";
 import Signup from "../profile/signup";
 import TuitScreen from "../tuits/tuit-screen";
+
 
 function Tuiter () {
   return(
@@ -33,7 +34,7 @@ function Tuiter () {
               <Route path="/tuiter/:uid" element={<Home/>}/>
               <Route path="/home" element={<Home/>}/>
               <Route path="/home/:uid" element={<Home/>}/>
-              <Route path="/explore" element={<Explore/>}/>
+              <Route path="/explore/*" element={<Explore/>}/>
               <Route path="/notifications" element={<Notifications/>}/>
               <Route path="/messages" element={<Messages/>}/>
               <Route path="/bookmarks" element={<Bookmarks/>}/>

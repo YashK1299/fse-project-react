@@ -1,6 +1,8 @@
 import React from "react";
 import logo from './logo.svg';
 import './styles.css';
+import './vendors/bootstrap/css/bootstrap.min.css'
+// import './vendors/fontawesome/css/all.min.css';
 // import Navigation from "./components/navigation";
 // import Tuits from "./components/tuits";
 // import WhatsHappening from "./components/whats-happening/whats-happening";
