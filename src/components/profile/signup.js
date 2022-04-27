@@ -72,9 +72,11 @@ const Signup = () => {
                     value={username}
                    placeholder="username" type="username"/>
             <span class="help-block"> {(usernameTouched && !username && "Username is required")}</span>
-            <span class="help-block"> {(usernameTouched
+            <span class="help-block"> {(usernameTouched && username
                 && ("Username can only contain Letters, Numbers, and underscore(_)"))}</span>
                 </OutsideClickHandler>
+            <span class="help-block"> {(username && !isUsernameValid 
+                && ("Invalid Username"))}</span>
                 <OutsideClickHandler
                 onOutsideClick={() => {
                     setPasswordTouched(false);
@@ -86,10 +88,12 @@ const Signup = () => {
                    value={password}
                    placeholder="password" type="password"/>
             <span class="help-block"> {(passwordTouched && !password && "Password is required")}</span>
-            <span class="help-block"> {(passwordTouched
+            <span class="help-block"> {(passwordTouched && password
                 && ("Password should have minimum eight characters, at least one uppercase letter, " 
                 + "one lowercase letter, one number and one special character"))}</span>
                 </OutsideClickHandler>
+            <span class="help-block"> {(!passwordTouched && password && !isPasswordValid 
+                && ("Invalid Password"))}</span>
             <input className="mb-2 form-control"
                    onChange={(e) =>
                        setNewUser({...newUser, email: e.target.value})}
@@ -102,17 +106,6 @@ const Signup = () => {
                     disabled={(!password || (password && !isPasswordValid) || !username || (username && !isUsernameValid))}
                     className="btn btn-primary mb-5 form-control">Reset
             </button>
-            <span class="help-block"> {((signupClicked || resetClicked) && usernameTouched
-             && !username && "Username is required")}</span>
-            <span class="help-block"> {((signupClicked || resetClicked) && usernameTouched
-             && username && !isUsernameValid 
-                && ("Username can only contain Letters, Numbers, and underscore(_)"))}</span>
-            <span class="help-block"> {((signupClicked || resetClicked) && passwordTouched
-             && !password && "Password is required")}</span>
-            <span class="help-block"> {((signupClicked || resetClicked) && passwordTouched
-             && password && !isPasswordValid 
-                && ("Password should have minimum eight characters, at least one uppercase letter, " 
-                + "one lowercase letter, one number and one special character"))}</span>
         </div>
     );
 }
