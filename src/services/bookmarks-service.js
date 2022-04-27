@@ -16,7 +16,7 @@ export const bookmarkTuit = (userId, tuitId) => {
 }
 
 export const unbookmarkTuit = (userId, tuitId) => {
-    api.post(`${BASE_URL}/api/users/${userId}/unbookmarks/${tuitId}`)
+    api.delete(`${BASE_URL}/api/users/${userId}/unbookmarks/${tuitId}`)
     .then(response => response?.data);
 }
 
