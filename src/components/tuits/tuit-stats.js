@@ -1,4 +1,4 @@
-const TuitStats = ({tuit, likeTuit, dislikeTuit}) => {
+const TuitStats = ({tuit, likeTuit, dislikeTuit, bookmarkTuit, inBookmarksPage, unbookmarkTuit}) => {
   return (
     <div className="row">
       ...
@@ -30,6 +30,24 @@ const TuitStats = ({tuit, likeTuit, dislikeTuit}) => {
         {tuit.stats && tuit.stats.dislikes}
         </span>
       </div>
+      { !inBookmarksPage && 
+        <div className="col">
+          <span onClick={() => bookmarkTuit(tuit)} data-testid="test-dislikeButton">
+          {
+          <i class="fa-light fa-bookmark"></i>
+          }
+          </span>
+        </div>
+      }
+       { inBookmarksPage && 
+        <div className="col">
+          <span onClick={() => unbookmarkTuit(tuit)} data-testid="test-dislikeButton">
+          {
+          <i class="fa-solid fa-bookmark"></i>
+          }
+          </span>
+        </div>
+      }
       ...
     </div>
   );
