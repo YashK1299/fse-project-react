@@ -3,6 +3,7 @@ import * as likesService from "../../services/likes-service";
 import * as dislikesService from "../../services/dislikes-service";
 import * as bookmarkService from "../../services/bookmarks-service";
 import * as service from "../../services/tuits-service";
+
 const Tuits = ({tuits = [], deleteTuit,
                 refreshTuits, inBookmarksPage = false}) => {
   if(!deleteTuit) {
@@ -25,13 +26,23 @@ const Tuits = ({tuits = [], deleteTuit,
 
   const bookmarkTuit = (tuit) => 
       bookmarkService.bookmarkTuit("me", tuit._id)
-      .then(refreshTuits)
-      .catch(e => alert(e));
+      .then(() => {
+        if(refreshTuits){
+          refreshTuits();
+        }
+        alert("Tuit bookmarked.");
+      })
+      .catch(e => alert("Failed to bookmark tuit."));
   
   const unbookmarkTuit = (tuit) => 
       bookmarkService.unbookmarkTuit("me", tuit._id)
-      .then(refreshTuits)
-      .catch(e => alert(e));
+      .then(() => {
+        if(refreshTuits){
+          refreshTuits();
+        }
+        alert("Tuit unbookmarked.");
+      })
+      .catch(e => alert("Failed to unbookmark tuit."));
 
   return (
     <div>

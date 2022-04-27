@@ -10,15 +10,13 @@ export const findTuitsBookmarkedByMe = (userId) =>
     api.get(`${BASE_URL}/api/users/${userId}/bookmarks`)
         .then(response => response.data);
 
-export const bookmarkTuit = (userId, tuitId) => {
+export const bookmarkTuit = (userId, tuitId) => 
     api.post(`${BASE_URL}/api/users/${userId}/bookmarks/${tuitId}`)
-    .then(response => response.data);
-}
 
-export const unbookmarkTuit = (userId, tuitId) => {
+
+export const unbookmarkTuit = (userId, tuitId) => 
     api.delete(`${BASE_URL}/api/users/${userId}/unbookmarks/${tuitId}`)
-    .then(response => response?.data);
-}
+
 
 const service = {
     findTuitsBookmarkedByMe,
