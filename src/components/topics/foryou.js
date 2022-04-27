@@ -1,9 +1,61 @@
-import React from "react";
+import React,{useEffect, useState}  from "react";
 import PostSummaryList from "../PostSummaryList";
+import PostSummaryItem from "../PostSummaryList/PostSummaryItem.js"
+import posts from "../PostSummaryList/posts.json"
+import Tuits from "../tuits";
+
+const BASE_URL = process.env.REACT_APP_BASE_URL
+const EXPLORE_URL = `${BASE_URL}/api/topics/`
+const TOPIC_URL = `${BASE_URL}/api/topics/findtopicid/ForYou`
 
 const ForYou = () => {
+    var [posts, setPosts] = useState([]);
+    var [topicId, setTopicId] = useState('');
+
+    const likeTuit = () => {
+        console.log('Like Tuit logged');
+    }
+
+    const dislikeTuit = () => {
+        console.log('Dislike Tuit logged');
+    }
+
+
+    useEffect(() =>
+        fetch(TOPIC_URL)
+            .then(response => response.json())
+            .then(topics => setTopicId(topics[0]._id)).then(),[]
+    );
+
+
+
+    // useEffect(() =>
+    //     fetch(EXPLORE_URL+topicId+"/tuits")
+    //         .then(response => response.json())
+    //         .then(tuits => setPosts(tuits)),[topicId]
+    // );
+    useEffect(() =>
+        fetch(EXPLORE_URL+topicId+"/tuits")
+            .then(response => response.json())
+            .then(tuits => {
+                var tuitdata = []
+                for(var tuit of tuits){
+                    tuitdata.push(tuit.tuit)
+                }
+                console.log(tuitdata);
+                console.log(tuits);
+                setPosts(tuitdata)
+            }),[topicId]
+    );
+
+
+
+
+
+
+
   return (
-      <div className="card wd-card-top mt-1">
+      <div><div className="card wd-card-top mt-1">
         <img src="../images/SpaceXStarship.jpeg"
              className="wd-card-top-image" alt=""></img>
         <div className="card-body wd-bottom-left">
@@ -11,6 +63,10 @@ const ForYou = () => {
           <h3 className="card-title">SpaceX's Starship</h3>
         </div>
       </div>
+
+          <Tuits tuits={posts} likeTuit={likeTuit} dislikeTuit={dislikeTuit} />
+
+    </div>
 
 )
   ;
